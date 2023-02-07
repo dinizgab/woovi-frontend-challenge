@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import logoImage from "./assets/logo.svg";
+import grayLogoImage from "./assets/gray-logo.svg"
+import secureShield from "./assets/secure-shield.svg"
+
+import PaymentOption from "./components/PaymentOption";
+
+const totalParcelValues = [30600, 30620, 30900, 31500, 31700, 31800];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className=" flex flex-col items-center px-5 py-10">
+      <img src={logoImage} alt="Logo Woovi" className="mb-10" />
+      <h1 className="text-2xl font-extrabold text-base-text mb-8">
+        João, como você quer pagar?
+      </h1>
+      <div className="w-full mb-8 ">
+        <PaymentOption totalValue={30500} parcelQuantity={1} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      {totalParcelValues.map((totalValue, parcelQuantity) => (
+        <PaymentOption
+          key={totalValue}
+          totalValue={totalValue}
+          parcelQuantity={parcelQuantity + 2}
+        />
+      ))}
+
+      <div className="text-gray-text flex flex-row gap-2 items-center justify-center mt-10">
+        <img src={secureShield} alt="Escudo seguro" />
+        Pagamento 100% seguro via:
+        <img src={grayLogoImage} alt="Logo cinza Woovi" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
