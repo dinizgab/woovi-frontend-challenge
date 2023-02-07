@@ -1,10 +1,10 @@
 import logoImage from "./assets/logo.svg";
-import grayLogoImage from "./assets/gray-logo.svg"
-import secureShield from "./assets/secure-shield.svg"
+import grayLogoImage from "./assets/gray-logo.svg";
+import secureShield from "./assets/secure-shield.svg";
 
 import PaymentOption from "./components/PaymentOption";
-
-const totalParcelValues = [30600, 30620, 30900, 31500, 31700, 31800];
+import { parcelInformations } from "./utils/mocks/parcelValues";
+import FirstPaymentOption from "./components/FirstPaymentOption";
 
 function App() {
   return (
@@ -14,13 +14,16 @@ function App() {
         João, como você quer pagar?
       </h1>
       <div className="w-full mb-8 ">
-        <PaymentOption totalValue={30500} parcelQuantity={1} />
+        <FirstPaymentOption totalValue={30500} parcelQuantity={1} />
       </div>
 
-      {totalParcelValues.map((totalValue, parcelQuantity) => (
+      {parcelInformations.map(({total, first, last, betterChoice}, parcelQuantity) => (
         <PaymentOption
-          key={totalValue}
-          totalValue={totalValue}
+          key={total}
+          totalValue={total}
+          first={first}
+          last={last}
+          betterChoice={betterChoice}
           parcelQuantity={parcelQuantity + 2}
         />
       ))}
