@@ -1,6 +1,5 @@
 import { moneyMask } from "../utils/moneyMask";
-import checked from "../assets/checked.svg";
-import { useState } from "react";
+import { Check } from "phosphor-react";
 
 interface FirstPaymentOptionProps {
   totalValue: number;
@@ -19,7 +18,9 @@ export default function FirstPaymentOption({
 
   return (
     <div
-      className={"border-2 border-gray relative w-[27rem] p-5 rounded-xl hover:bg-green-bg group"}
+      className={
+        "border-2 border-gray relative w-full md:w-[27rem] p-5 rounded-xl hover:bg-green-bg group mb-8"
+      }
       onClick={() => handleQuantityChange(totalValue)}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
@@ -33,9 +34,14 @@ export default function FirstPaymentOption({
           </div>
           <input
             type="radio"
+            name={`${totalValue}`}
             checked={isQuantitySelected}
             className="rounded-full w-6 h-6 border-2 border-gray appearance-none checked:bg-green checked:border-green"
-          ></input>
+          />
+          {/*           {
+            isQuantitySelected ? <Check className="" color="white" weight="bold"/> : null
+          }
+ */}
         </div>
         <div className="text-green ">
           Ganhe <strong>3%</strong> de Cashback

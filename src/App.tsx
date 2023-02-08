@@ -14,7 +14,6 @@ function App() {
     selectedValue === value;
   const handleQuantityChange = (value: number): void => setSelectedValue(value);
 
-  console.log(selectedValue);
   return (
     <div className=" flex flex-col items-center px-5 py-10">
       <img src={logoImage} alt="Logo Woovi" className="mb-10" />
@@ -22,14 +21,12 @@ function App() {
         João, como você quer pagar?
       </h1>
 
-      <div className="mb-8">
-        <FirstPaymentOption
-          totalValue={30500}
-          parcelQuantity={1}
-          isQuantitySelected={isQuantitySelected(30500)}
-          handleQuantityChange={handleQuantityChange}
-        />
-      </div>
+      <FirstPaymentOption
+        totalValue={30500}
+        parcelQuantity={1}
+        isQuantitySelected={isQuantitySelected(30500)}
+        handleQuantityChange={handleQuantityChange}
+      />
 
       {parcelInformations.map(
         ({ total, first, last, betterChoice }, parcelQuantity) => (

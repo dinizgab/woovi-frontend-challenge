@@ -28,9 +28,9 @@ export default function PaymentOption({
   return (
     <div
       className={clsx(
-        "border-2 border-gray relative w-[27rem] p-5 hover:bg-green-bg",
+        "border-2 border-gray w-full md:w-[27rem] p-5 hover:bg-green-bg",
         {
-          "rounded-t-xl": parcelQuantity === 2,
+          "rounded-t-xl relative": parcelQuantity === 2,
           "border-t-0": !first,
           "rounded-b-xl": last,
         }
