@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import { moneyMask } from "../utils/moneyMask";
 
 interface PaymentOptionProps {
@@ -7,6 +8,8 @@ interface PaymentOptionProps {
   first?: boolean;
   last?: boolean;
   betterChoice?: boolean;
+  isQuantitySelected: boolean;
+  handleQuantityChange: (value: number) => void;
 }
 
 export default function PaymentOption({
@@ -15,6 +18,8 @@ export default function PaymentOption({
   first,
   last,
   betterChoice,
+  isQuantitySelected,
+  handleQuantityChange,
 }: PaymentOptionProps) {
   const parceledValue = totalValue / parcelQuantity;
   const formatedParceledValue = moneyMask(parceledValue);
@@ -22,11 +27,15 @@ export default function PaymentOption({
 
   return (
     <div
-      className={clsx("border-2 border-gray relative w-full p-5", {
-        "rounded-t-xl": parcelQuantity === 2,
-        "border-t-0": !first,
-        "rounded-b-xl": last,
-      })}
+      className={clsx(
+        "border-2 border-gray relative w-[27rem] p-5 hover:bg-green-bg",
+        {
+          "rounded-t-xl": parcelQuantity === 2,
+          "border-t-0": !first,
+          "rounded-b-xl": last,
+        }
+      )}
+      onClick={() => handleQuantityChange(totalValue)}
     >
       {first ? (
         <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
@@ -36,11 +45,14 @@ export default function PaymentOption({
 
       <div className="flex flex-col">
         <div className="font-medium text-xl text-base-text flex flex-row justify-between">
-          {" "}
           <div>
             <strong>{parcelQuantity}x</strong> {formatedParceledValue}
           </div>
-          <div className="rounded-full w-6 h-6 border-2 border-gray"></div>
+          <input
+            type="radio"
+            checked={isQuantitySelected}
+            className="rounded-full w-6 h-6 border-2 border-gray appearance-none checked:bg-green checked:border-green"
+          />
         </div>
 
         <div className="text-gray-text">Total: {formatedTotalValue}</div>
