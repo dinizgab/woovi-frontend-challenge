@@ -1,5 +1,5 @@
 import { moneyMask } from "../utils/moneyMask";
-import { Check } from "phosphor-react";
+import checked from "../assets/checked.svg";
 
 interface FirstPaymentOptionProps {
   totalValue: number;
@@ -18,9 +18,9 @@ export default function FirstPaymentOption({
 
   return (
     <div
-      className={
-        "border-2 border-gray relative w-full md:w-[27rem] p-5 rounded-xl hover:bg-green-bg group mb-8"
-      }
+      className={`mb-8 border-2 border-gray relative w-full md:w-[27rem] p-5 rounded-xl hover:bg-green-bg ${
+        isQuantitySelected ? "bg-green-bg border-green" : ""
+      }`}
       onClick={() => handleQuantityChange(totalValue)}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
@@ -32,16 +32,15 @@ export default function FirstPaymentOption({
           <div>
             <strong>{parcelQuantity}x</strong> {formatedTotalValue}
           </div>
-          <input
-            type="radio"
-            name={`${totalValue}`}
-            checked={isQuantitySelected}
-            className="rounded-full w-6 h-6 border-2 border-gray appearance-none checked:bg-green checked:border-green"
-          />
-          {/*           {
-            isQuantitySelected ? <Check className="" color="white" weight="bold"/> : null
-          }
- */}
+          <div
+            className={`flex items-center justify-center rounded-full w-6 h-6 border-2 border-gray appearance-none ${
+              isQuantitySelected ? "bg-green border-green" : null
+            }`}
+          >
+            {isQuantitySelected ? (
+              <img src={checked} alt="Checked value" />
+            ) : null}
+          </div>
         </div>
         <div className="text-green ">
           Ganhe <strong>3%</strong> de Cashback
