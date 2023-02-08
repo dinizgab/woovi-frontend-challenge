@@ -29,7 +29,7 @@ export default function PaymentOption({
   return (
     <div
       className={clsx(
-        ` border-2 border-gray w-full md:w-[27rem] p-5 hover:bg-green-bg`,
+        ` border-2 border-gray w-full sm:w-[27rem] p-5 hover:bg-green-bg`,
         {
           "border-t-2 bg-green-bg border-green": isQuantitySelected,
           "rounded-t-xl relative": parcelQuantity === 2,
