@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { ChangeEvent } from "react";
 
 import { moneyMask } from "../utils/moneyMask";
 
@@ -10,7 +9,7 @@ interface PaymentOptionProps {
   last?: boolean;
   betterChoice?: boolean;
   isQuantitySelected: boolean;
-  handleQuantityChange: (value: number) => void
+  handleQuantityChange: (value: number) => void;
 }
 
 export default function PaymentOption({
@@ -36,6 +35,7 @@ export default function PaymentOption({
           "rounded-b-xl": last,
         }
       )}
+      onClick={() => handleQuantityChange(totalValue)}
     >
       {first ? (
         <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
@@ -45,16 +45,13 @@ export default function PaymentOption({
 
       <div className="flex flex-col">
         <div className="font-medium text-xl text-base-text flex flex-row justify-between">
-          {" "}
           <div>
             <strong>{parcelQuantity}x</strong> {formatedParceledValue}
           </div>
           <input
             type="radio"
             checked={isQuantitySelected}
-            value={totalValue}
-            onChange={() => handleQuantityChange(totalValue)}
-            className="rounded-full w-6 h-6 border-2 border-gray"
+            className="rounded-full w-6 h-6 border-2 border-gray appearance-none checked:bg-green checked:border-green"
           />
         </div>
 

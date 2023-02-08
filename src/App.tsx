@@ -3,8 +3,9 @@ import grayLogoImage from "./assets/gray-logo.svg";
 import secureShield from "./assets/secure-shield.svg";
 
 import PaymentOption from "./components/PaymentOption";
-import { parcelInformations } from "./utils/mocks/parcelValues";
 import FirstPaymentOption from "./components/FirstPaymentOption";
+import { parcelInformations } from "./utils/mocks/parcelValues";
+
 import { useState } from "react";
 
 function App() {
