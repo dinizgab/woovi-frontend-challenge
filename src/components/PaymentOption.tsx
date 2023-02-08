@@ -29,11 +29,10 @@ export default function PaymentOption({
   return (
     <div
       className={clsx(
-        ` border-2 border-gray w-full sm:w-[27rem] p-5 hover:bg-green-bg`,
+        ` -mb-[2px] border-2 border-gray w-full sm:w-[27rem] p-5 hover:bg-green-bg`,
         {
-          "border-t-2 bg-green-bg border-green": isQuantitySelected,
+          "z-20 bg-green-bg border-green": isQuantitySelected,
           "rounded-t-xl relative": parcelQuantity === 2,
-          "border-t-0": !first,
           "rounded-b-xl": last,
         }
       )}
