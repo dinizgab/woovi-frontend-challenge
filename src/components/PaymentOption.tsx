@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import checked from "../assets/checked.svg";
 
 import { moneyMask } from "../utils/moneyMask";
 
@@ -28,9 +29,10 @@ export default function PaymentOption({
   return (
     <div
       className={clsx(
-        "border-2 border-gray relative w-[27rem] p-5 hover:bg-green-bg",
+        ` border-2 border-gray w-full sm:w-[27rem] p-5 hover:bg-green-bg`,
         {
-          "rounded-t-xl": parcelQuantity === 2,
+          "border-t-2 bg-green-bg border-green": isQuantitySelected,
+          "rounded-t-xl relative": parcelQuantity === 2,
           "border-t-0": !first,
           "rounded-b-xl": last,
         }
@@ -48,11 +50,15 @@ export default function PaymentOption({
           <div>
             <strong>{parcelQuantity}x</strong> {formatedParceledValue}
           </div>
-          <input
-            type="radio"
-            checked={isQuantitySelected}
-            className="rounded-full w-6 h-6 border-2 border-gray appearance-none checked:bg-green checked:border-green"
-          />
+          <div
+            className={`flex items-center justify-center rounded-full w-6 h-6 border-2 border-gray appearance-none ${
+              isQuantitySelected ? "bg-green border-green" : null
+            }`}
+          >
+            {isQuantitySelected ? (
+              <img src={checked} alt="Checked value" />
+            ) : null}
+          </div>
         </div>
 
         <div className="text-gray-text">Total: {formatedTotalValue}</div>
