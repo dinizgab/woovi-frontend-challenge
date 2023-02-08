@@ -1,18 +1,23 @@
+import { ChangeEvent } from "react";
 import { moneyMask } from "../utils/moneyMask";
 
 interface FirstPaymentOptionProps {
   totalValue: number;
   parcelQuantity: number;
+  isQuantitySelected: boolean
+  handleQuantityChange: (value: number) => void
 }
 
 export default function FirstPaymentOption({
   totalValue,
   parcelQuantity,
+  isQuantitySelected,
+  handleQuantityChange,
 }: FirstPaymentOptionProps) {
   const formatedTotalValue = moneyMask(totalValue);
 
   return (
-    <div className="border-2 border-gray relative w-full p-5 rounded-xl">
+    <div className="border-2 border-gray relative w-[27rem] p-5 rounded-xl hover:bg-green-bg">
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
         Pix
       </div>
@@ -23,9 +28,16 @@ export default function FirstPaymentOption({
           <div>
             <strong>{parcelQuantity}x</strong> {formatedTotalValue}
           </div>
-          <div className="rounded-full w-6 h-6 border-2 border-gray"></div>
+          <input
+            type="radio"
+            name={`${totalValue}`}
+            checked={isQuantitySelected}
+            value={totalValue}
+            onChange={() => handleQuantityChange(totalValue)}
+            className="rounded-full w-6 h-6 border-2 border-gray"
+          />
         </div>
-        <div className="text-green mb-1">
+        <div className="text-green ">
           Ganhe <strong>3%</strong> de Cashback
         </div>
         <div className="text-gray-text">Total: {formatedTotalValue}</div>
