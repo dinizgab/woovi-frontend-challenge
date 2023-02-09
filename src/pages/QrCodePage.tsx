@@ -16,10 +16,10 @@ export default function QrCodePage() {
   const headerTitle = `João, pague a entrada de ${parcelValue} pelo Pix`;
 
   return (
-    <div className="flex flex-col items-center font-nunito px-10">
+    <div className="flex flex-col items-center font-nunito px-4">
       <Header title={headerTitle} />
 
-      <div className="p-2 border-2 border-green rounded-xl">
+      <div className="max-w-xs p-2 border-2 border-green rounded-xl -mt-3">
         <img src={qrcode} alt="QR-Code de pagamento" />
       </div>
 
