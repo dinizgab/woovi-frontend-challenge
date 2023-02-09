@@ -6,11 +6,11 @@ import { moneyMask } from "../utils/moneyMask";
 interface PaymentOptionProps {
   totalValue: number;
   parcelQuantity: number;
-  first?: boolean;
-  last?: boolean;
-  betterChoice?: boolean;
+  first: boolean;
+  last: boolean;
+  betterChoice: boolean;
   isQuantitySelected: boolean;
-  handleQuantityChange: (value: number) => void;
+  handleQuantityChange: (totalValue: number, parcelQuantity: number, formatedParceledValue: string) => void;
 }
 
 export default function PaymentOption({
@@ -37,7 +37,7 @@ export default function PaymentOption({
           "rounded-b-xl": last,
         }
       )}
-      onClick={() => handleQuantityChange(totalValue)}
+      onClick={() => handleQuantityChange(totalValue, parcelQuantity, formatedParceledValue)}
     >
       {first ? (
         <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">

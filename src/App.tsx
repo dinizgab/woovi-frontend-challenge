@@ -11,14 +11,22 @@ import ConfirmationModal from "./components/ConfirmationModal";
 
 function App() {
   const [selectedValue, setSelectedValue] = useState(30500);
+  const [parcelQuantity, setParcelQuantity] = useState(1)
+  const [parcelValue, setParcelValue] = useState("R$ 30.500,00")
+
+  console.log(parcelQuantity, parcelValue)
   const isQuantitySelected = (value: number): boolean =>
     selectedValue === value;
-  const handleQuantityChange = (value: number): void => setSelectedValue(value);
+  const handleQuantityChange = (totalValue: number, parcelQuantity: number, parcelValue: string): void => {
+      setSelectedValue(totalValue)
+      setParcelQuantity(parcelQuantity)
+      setParcelValue(parcelValue)
+  };
 
   return (
     <div className=" flex flex-col items-center px-5 py-10 font-nunito">
       <img src={logoImage} alt="Logo Woovi" className="mb-10" />
-      <h1 className="text-2xl font-extrabold text-base-text mb-8">
+      <h1 className="text-2xl font-extrabold text-base-text mb-8 text-center">
         João, como você quer pagar?
       </h1>
 
@@ -44,7 +52,7 @@ function App() {
         )
       )}
 
-      <ConfirmationModal />
+      <ConfirmationModal parcelValue={parcelValue} parcelQuantity={parcelQuantity}/>
 
       <div className="text-gray-text flex flex-row gap-2 items-center justify-center">
         <img src={secureShield} alt="Escudo seguro" />

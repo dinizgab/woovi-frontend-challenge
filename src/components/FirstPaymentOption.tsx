@@ -5,7 +5,7 @@ interface FirstPaymentOptionProps {
   totalValue: number;
   parcelQuantity: number;
   isQuantitySelected: boolean;
-  handleQuantityChange: (value: number) => void;
+  handleQuantityChange: (totalValue: number, parcelQuantity: number, parcelValue: string) => void;
 }
 
 export default function FirstPaymentOption({
@@ -21,7 +21,7 @@ export default function FirstPaymentOption({
       className={`mb-8 border-2 relative w-full max-w-md p-5 rounded-xl hover:bg-green-bg cursor-pointer ${
         isQuantitySelected ? "bg-green-bg border-green" : "border-gray"
       }`}
-      onClick={() => handleQuantityChange(totalValue)}
+      onClick={() => handleQuantityChange(totalValue, parcelQuantity, formatedTotalValue)}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
         Pix
