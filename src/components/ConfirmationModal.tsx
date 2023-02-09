@@ -1,14 +1,17 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { Link } from "react-router-dom";
 
-interface ConfirmationModalProps {
-  parcelQuantity: number;
-  parcelValue: string;
-}
+import { useContext } from "react";
+import { ValueInfosContext } from "../providers/ValueInfosProvider";
 
-export default function ConfirmationModal({
-  parcelQuantity,
-  parcelValue,
-}: ConfirmationModalProps) {
+import { moneyMask } from "../utils/moneyMask";
+
+
+export default function ConfirmationModal() {
+  const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
+
+  const parcelValue = selectedValue / parcelQuantity;
+
   return (
     <>
       <Dialog.Root>
@@ -24,19 +27,21 @@ export default function ConfirmationModal({
             <Dialog.Title className="text-center text-black font-bold text-2xl">
               Confirmar número de parcelas?
             </Dialog.Title>
+            <p className="font-normal text-center mt-2 mb-4 text-lg">
+              <strong>{parcelQuantity}x</strong> de {moneyMask(parcelValue)}
+            </p>
 
-            <p className="font-normal text-center mt-2 mb-4 text-lg"><strong>{parcelQuantity}x</strong> de {parcelValue}</p>
-            
             <div className="flex justify-around">
               <Dialog.Close className="p-2 border-2 border-red-500 text-red-500 hover:border-red-400 hover:text-red-400  rounded-2xl w-2/5">
                 Cancelar
               </Dialog.Close>
-              <button
+              <Link
+                to="/entry"
                 type="submit"
                 className="p-2 border-2 border-green bg-green hover:bg-green-hover hover:border-green-hover text-white rounded-2xl w-2/5 flex items-center justify-center"
               >
                 Confirmar
-              </button>
+              </Link>
             </div>
           </Dialog.Content>
         </Dialog.Portal>
