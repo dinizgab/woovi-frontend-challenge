@@ -10,6 +10,7 @@ module.exports = {
         "gray": "#E5E5E5",
         "gray-text": "#AFAFAF",
         "green": "#03D69D",
+        "green-hover": "#10E4AB",
         "green-bg": "#F4FBF9",
         "blue": "#133A6F"
       },
