@@ -5,7 +5,7 @@ interface FirstPaymentOptionProps {
   totalValue: number;
   parcelQuantity: number;
   isQuantitySelected: boolean;
-  handleQuantityChange: (value: number) => void;
+  handleQuantityChange: (totalValue: number, parcelQuantity: number) => void;
 }
 
 export default function FirstPaymentOption({
@@ -18,10 +18,10 @@ export default function FirstPaymentOption({
 
   return (
     <div
-      className={`mb-8 border-2 border-gray relative w-full sm:w-[27rem] p-5 rounded-xl hover:bg-green-bg ${
-        isQuantitySelected ? "bg-green-bg border-green" : ""
+      className={`mb-8 border-2 relative w-full max-w-md p-5 rounded-xl hover:bg-green-bg cursor-pointer ${
+        isQuantitySelected ? "bg-green-bg border-green" : "border-gray"
       }`}
-      onClick={() => handleQuantityChange(totalValue)}
+      onClick={() => handleQuantityChange(totalValue, parcelQuantity)}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
         Pix
@@ -33,8 +33,8 @@ export default function FirstPaymentOption({
             <strong>{parcelQuantity}x</strong> {formatedTotalValue}
           </div>
           <div
-            className={`flex items-center justify-center rounded-full w-6 h-6 border-2 border-gray appearance-none ${
-              isQuantitySelected ? "bg-green border-green" : null
+            className={`flex items-center justify-center rounded-full w-6 h-6 border-2 appearance-none ${
+              isQuantitySelected ? "bg-green border-green" : "border-gray"
             }`}
           >
             {isQuantitySelected ? (
