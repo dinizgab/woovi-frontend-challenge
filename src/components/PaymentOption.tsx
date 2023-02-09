@@ -29,9 +29,10 @@ export default function PaymentOption({
   return (
     <div
       className={clsx(
-        `-mb-[2px] border-2 border-gray w-full sm:w-[27rem] p-5 hover:bg-green-bg cursor-pointer`,
+        `-mb-[2px] border-2 w-full max-w-md p-5 hover:bg-green-bg cursor-pointer ${
+          isQuantitySelected ? "z-10 bg-green-bg border-green" : "border-gray"
+        }`,
         {
-          "z-10 bg-green-bg border-green": isQuantitySelected,
           "rounded-t-xl relative": parcelQuantity === 2,
           "rounded-b-xl": last,
         }
@@ -50,8 +51,8 @@ export default function PaymentOption({
             <strong>{parcelQuantity}x</strong> {formatedParceledValue}
           </div>
           <div
-            className={`flex items-center justify-center rounded-full w-6 h-6 border-2 border-gray appearance-none ${
-              isQuantitySelected ? "bg-green border-green" : null
+            className={`flex items-center justify-center rounded-full w-6 h-6 border-2  appearance-none ${
+              isQuantitySelected ? "bg-green border-green" : "border-gray"
             }`}
           >
             {isQuantitySelected ? (

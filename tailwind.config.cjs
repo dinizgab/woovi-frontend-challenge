@@ -15,7 +15,7 @@ module.exports = {
         "blue": "#133A6F"
       },
       fontFamily: {
-        sans: ["nunito"]
+        nunito: ["Nunito"]
       }
     },
   },
