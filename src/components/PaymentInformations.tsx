@@ -8,9 +8,15 @@ import infosArrow from "../assets/infos-arrow.svg";
 
 import * as Accordion from "@radix-ui/react-accordion";
 
-export default function PaymentInformations() {
+interface PaymentInformationsProps {
+  isPayed: boolean;
+}
+
+export default function PaymentInformations({
+  isPayed,
+}: PaymentInformationsProps) {
   const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
-  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false)
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
 
   const formatedParcelValue = moneyMask(selectedValue / parcelQuantity);
   const formatedSelectedValue = moneyMask(selectedValue);
@@ -29,6 +35,7 @@ export default function PaymentInformations() {
 
       {parcels.map((parcelValue, parcelNumber) => (
         <MensalPaymentInformation
+          isPayed={isPayed}
           parcelValue={parcelValue}
           parcelNumber={parcelNumber}
         />
@@ -42,15 +49,22 @@ export default function PaymentInformations() {
       </div>
 
       <SeparationLine />
+
       <Accordion.Root
         type="single"
         collapsible
         className="w-full max-w-sm px-2"
       >
         <Accordion.Item value="how-it-works">
-          <Accordion.Trigger className="w-full max-w-sm flex flex-row items-center justify-between" onClick={() => setIsAccordionOpen(!isAccordionOpen)}>
+          <Accordion.Trigger
+            className="w-full max-w-sm flex flex-row items-center justify-between"
+            onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+          >
             <div className="font-extra">Como funciona?</div>
-            <img src={infosArrow} className={`${isAccordionOpen && "rotate-180"} duration-300`}/>
+            <img
+              src={infosArrow}
+              className={`${isAccordionOpen && "rotate-180"} duration-300`}
+            />
           </Accordion.Trigger>
           <Accordion.Content className="text-gray-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

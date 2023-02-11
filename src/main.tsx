@@ -3,8 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
+
+import CreditCardPage from "./pages/CreditCardPage";
 import ParcelSelectionPage from "./pages/ParcelSelectionPage";
 import QrCodePage from "./pages/QrCodePage";
+
 import { ValueInfosProvider } from "./providers/ValueInfosProvider";
 
 const router = createBrowserRouter([
@@ -13,8 +16,12 @@ const router = createBrowserRouter([
     element: <ParcelSelectionPage />,
   },
   {
-    path: "entry",
+    path: "/entry",
     element: <QrCodePage />,
+  },
+  {
+    path: "/card",
+    element: <CreditCardPage />,
   },
 ]);
 
