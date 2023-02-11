@@ -12,7 +12,7 @@ import PaymentInformations from "../components/PaymentInformations";
 export default function QrCodePage() {
   const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
   const parcelValue = moneyMask(selectedValue / parcelQuantity);
-  
+
   const headerTitle = `João, pague a entrada de ${parcelValue} pelo Pix`;
 
   return (
@@ -28,7 +28,7 @@ export default function QrCodePage() {
         <img className="ml-2" src={copyQrCode} alt="Copiar o QRCode" />
       </button>
 
-      <PaymentInformations />
+      <PaymentInformations isPayed={false} />
       
       <Footer />
     </div>
