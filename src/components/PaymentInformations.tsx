@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ValueInfosContext } from "../providers/ValueInfosProvider";
-
-import { moneyMask } from "../utils/moneyMask";
-import dropdownArrow from "../assets/dropdown-arrow.svg";
-
 import MensalPaymentInformation from "./MensalPaymentInformation";
 import SeparationLine from "./SeparationLine";
 
+import { moneyMask } from "../utils/moneyMask";
+import infosArrow from "../assets/infos-arrow.svg";
+
+import * as Accordion from "@radix-ui/react-accordion";
+
 export default function PaymentInformations() {
   const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false)
 
   const formatedParcelValue = moneyMask(selectedValue / parcelQuantity);
   const formatedSelectedValue = moneyMask(selectedValue);
@@ -40,11 +42,22 @@ export default function PaymentInformations() {
       </div>
 
       <SeparationLine />
-
-      <div className="w-full max-w-sm flex flex-row items-center justify-between px-2">
-        <div className="font-extra">Como funciona?</div>
-        <img src={dropdownArrow} />
-      </div>
+      <Accordion.Root
+        type="single"
+        collapsible
+        className="w-full max-w-sm px-2"
+      >
+        <Accordion.Item value="how-it-works">
+          <Accordion.Trigger className="w-full max-w-sm flex flex-row items-center justify-between" onClick={() => setIsAccordionOpen(!isAccordionOpen)}>
+            <div className="font-extra">Como funciona?</div>
+            <img src={infosArrow} className={`${isAccordionOpen && "rotate-180"} duration-300`}/>
+          </Accordion.Trigger>
+          <Accordion.Content className="text-gray-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
 
       <SeparationLine />
 
