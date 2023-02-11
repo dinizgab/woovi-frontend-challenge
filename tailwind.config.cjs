@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         "base-text": "#4D4D4D",
         "gray": "#E5E5E5",
+        "bright-gray": "#EFEFEF",
         "gray-text": "#AFAFAF",
         "green": "#03D69D",
         "green-hover": "#10E4AB",

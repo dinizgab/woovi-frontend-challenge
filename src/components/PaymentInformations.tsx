@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ValueInfosContext } from "../providers/ValueInfosProvider";
-import { moneyMask } from "../utils/moneyMask";
 import MensalPaymentInformation from "./MensalPaymentInformation";
+import SeparationLine from "./SeparationLine";
+
+import { moneyMask } from "../utils/moneyMask";
+import infosArrow from "../assets/infos-arrow.svg";
+
+import * as Accordion from "@radix-ui/react-accordion";
 
 export default function PaymentInformations() {
   const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false)
+
   const formatedParcelValue = moneyMask(selectedValue / parcelQuantity);
   const formatedSelectedValue = moneyMask(selectedValue);
   const parcels = [];
@@ -27,20 +34,32 @@ export default function PaymentInformations() {
         />
       ))}
 
-      <div className="w-full max-w-sm h-0 border-2 border-t-0 border-gray mt-3"></div>
+      <SeparationLine />
 
-      <div className="w-full max-w-sm flex flex-row justify-between items-center text-base-text py-3 px-2">
+      <div className="w-full max-w-sm flex flex-row justify-between items-center text-base-text px-2">
         <div>CET: 0,5%</div>
         <div>Total: {formatedSelectedValue}</div>
       </div>
-      <div className="w-full max-w-sm h-0 border-2 border-t-0 border-gray"></div>
 
-      <div className="w-full max-w-sm flex flex-row items-center justify-between py-3 px-2">
-        <div className="font-extra">Como funciona?</div>
-        <div>v</div>
-      </div>
+      <SeparationLine />
+      <Accordion.Root
+        type="single"
+        collapsible
+        className="w-full max-w-sm px-2"
+      >
+        <Accordion.Item value="how-it-works">
+          <Accordion.Trigger className="w-full max-w-sm flex flex-row items-center justify-between" onClick={() => setIsAccordionOpen(!isAccordionOpen)}>
+            <div className="font-extra">Como funciona?</div>
+            <img src={infosArrow} className={`${isAccordionOpen && "rotate-180"} duration-300`}/>
+          </Accordion.Trigger>
+          <Accordion.Content className="text-gray-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
 
-      <div className="w-full max-w-sm h-0 border-2 border-t-0 border-gray mb-5"/>
+      <SeparationLine />
 
       <div className="text-gray-text -mb-1">Identificador:</div>
       <div className="text-base-text font-extrabold mb-10">
