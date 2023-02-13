@@ -25,7 +25,7 @@ export default function ParcelSelectionPage() {
   };
 
   return (
-    <div className=" flex flex-col items-center px-5 font-nunito">
+    <div className="flex flex-col items-center px-5 font-nunito">
       <Header title={headerTitle}/>
 
       <FirstPaymentOption
@@ -36,14 +36,11 @@ export default function ParcelSelectionPage() {
       />
 
       {parcelInformations.map(
-        ({ total, first, last, betterChoice, parcelQuantity }) => (
+        ({ total, ...props }) => (
           <PaymentOption
             key={total}
             totalValue={total}
-            first={first}
-            last={last}
-            betterChoice={betterChoice}
-            parcelQuantity={parcelQuantity}
+            {...props}
             isQuantitySelected={isQuantitySelected(total)}
             handleQuantityChange={handleQuantityChange}
           />

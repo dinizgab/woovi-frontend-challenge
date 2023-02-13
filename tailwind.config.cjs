@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         "base-text": "#4D4D4D",
+        "label-text": "#4D4D4D",
         "gray": "#E5E5E5",
         "bright-gray": "#EFEFEF",
         "gray-text": "#AFAFAF",

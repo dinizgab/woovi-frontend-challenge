@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import CardInfosForm from "../components/CardInfosForm";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import PaymentInformations from "../components/PaymentInformations";
 
@@ -15,7 +17,10 @@ export default function CreditCardPage() {
     <div className="flex flex-col items-center px-5 font-nunito">
       <Header title={headerTitle} />
 
+      <CardInfosForm />
+      
       <PaymentInformations isPayed={true} />
+      <Footer />
     </div>
   );
 }
