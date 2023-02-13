@@ -26,7 +26,7 @@ export default function ConfirmationModal() {
           <Dialog.Content className="absolute p-5 bg-white rounded-xl w-4/5 max-w-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 font-nunito">
             <Dialog.Title className="text-center text-black font-bold text-2xl">
               Confirmar número de parcelas?
-            </Dialog.Title>
+           </Dialog.Title>
             <p className="font-normal text-center mt-2 mb-4 text-lg">
               <strong>{parcelQuantity}x</strong> de {moneyMask(parcelValue)}
             </p>
