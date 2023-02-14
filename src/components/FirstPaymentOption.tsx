@@ -20,7 +20,7 @@ export default function FirstPaymentOption({
     <div
       className={`mb-8 border-2 relative w-full max-w-md p-5 rounded-xl hover:bg-green-bg cursor-pointer ${
         isQuantitySelected ? "bg-green-bg border-green" : "border-gray"
-      }`}
+      } transition-colors duration-150`}
       onClick={() => handleQuantityChange(totalValue, parcelQuantity)}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">

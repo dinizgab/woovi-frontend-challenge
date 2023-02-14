@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ValueInfosContext } from "../providers/ValueInfosProvider";
 
+import check from "../assets/checked.svg";
 import { moneyMask } from "../utils/moneyMask";
 
 
@@ -17,7 +18,7 @@ export default function ConfirmationModal() {
       <Dialog.Root>
         <Dialog.Trigger
           type="button"
-          className="my-5 p-3 rounded-2xl w-40 bg-green hover:bg-green-hover text-lg text-white"
+          className="my-5 p-3 rounded-2xl w-40 bg-green hover:bg-green-hover text-lg text-white transition-colors duration-150"
         >
           Confirmar
         </Dialog.Trigger>
@@ -32,14 +33,15 @@ export default function ConfirmationModal() {
             </p>
 
             <div className="flex justify-around">
-              <Dialog.Close className="p-2 border-2 border-red-500 text-red-500 hover:border-red-400 hover:text-red-400  rounded-2xl w-2/5">
+              <Dialog.Close className="p-2 border-2 border-red-500 text-red-500 hover:border-red-400 hover:text-red-400  rounded-2xl w-2/5 transition-colors duration-150">
                 Cancelar
               </Dialog.Close>
               <Link
                 to="/entry"
                 type="submit"
-                className="p-2 border-2 border-green bg-green hover:bg-green-hover hover:border-green-hover text-white rounded-2xl w-2/5 flex items-center justify-center"
+                className="p-2 border-2 border-green bg-green hover:bg-green-hover hover:border-green-hover text-white rounded-2xl w-2/5 flex items-center justify-center transition-colors duration-150"
               >
+                <img src={check} alt="Confirmar pagamento" className="mr-3"/>
                 Confirmar
               </Link>
             </div>

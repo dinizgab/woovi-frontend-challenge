@@ -1,6 +1,5 @@
 import { inputLabels, smallerInputLabels } from "../utils/inputLabels";
 import CardInfoInput from "./CardInfoInput";
-import SmallerCardInfoInput from "./SmallerCardInfoInput";
 
 export default function CardInfosForm() {
   return (
@@ -11,7 +10,7 @@ export default function CardInfosForm() {
 
       <div className="grid grid-cols-2 gap-5">
         {smallerInputLabels.map(({ label, placeholder }) => (
-          <SmallerCardInfoInput
+          <CardInfoInput
             key={label}
             label={label}
             placeholder={placeholder}
@@ -21,7 +20,7 @@ export default function CardInfosForm() {
 
       <button
         type="submit"
-        className="p-2 bg-blue hover:bg-blue-hover rounded-xl w-full text-white"
+        className="p-2 bg-blue hover:bg-blue-hover rounded-xl w-full text-white transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1   focus:ring-blue"
       >
         Pagar
       </button>
