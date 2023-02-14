@@ -9,6 +9,7 @@ import { ValueInfosContext } from "../providers/ValueInfosProvider";
 export default function CreditCardPage() {
   const { parcelQuantity, setParcelQuantity } = useContext(ValueInfosContext);
   setParcelQuantity(4)
+
   const headerTitle = `João, pague o restante em ${
     parcelQuantity - 1
   }x no cartão`;
@@ -19,7 +20,7 @@ export default function CreditCardPage() {
 
       <CardInfosForm />
       
-      <PaymentInformations isPayed={true} />
+      <PaymentInformations howManyIsPayed={1} />
       <Footer />
     </div>
   );

@@ -23,12 +23,12 @@ export default function QrCodePage() {
         <img src={qrcode} alt="QR-Code de pagamento" />
       </div>
 
-      <button className="p-[.5rem] px-5 my-5 bg-blue hover:bg-blue-hover flex flex-row items-center justify-center text-white rounded-lg max-w-xs transition-colors duration-150">
+      <button className="p-[.5rem] px-5 my-5 bg-blue hover:bg-blue-hover flex flex-row items-center justify-center text-white rounded-lg max-w-xs transition-colors duration-150 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-blue">
         Clique para copiar QR CODE
         <img className="ml-2" src={copyQrCode} alt="Copiar o QRCode" />
       </button>
 
-      <PaymentInformations isPayed={false} />
+      <PaymentInformations howManyIsPayed={0} />
       
       <Footer />
     </div>
