@@ -23,7 +23,8 @@ export default function MensalPaymentInformation({
       <div className="flex flex-row items-center">
         <div
           className={`mr-2 w-4 h-4 flex items-center justify-center 
-          ${isPayed && correctedParcelNumber === 1 && "bg-green"} 
+          ${isPayed && correctedParcelNumber === 1 && "bg-green"}
+          ${correctedParcelNumber === 1 && "border-green"}
           ${
             isPayed && (correctedParcelNumber === 1 || correctedParcelNumber === 2)   
              ? "border-green" : "border-gray"
