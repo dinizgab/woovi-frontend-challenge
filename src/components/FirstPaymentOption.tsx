@@ -1,5 +1,6 @@
 import { moneyMask } from "../utils/moneyMask";
 import checked from "../assets/checked.svg";
+import clsx from "clsx";
 
 interface FirstPaymentOptionProps {
   totalValue: number;
@@ -18,10 +19,16 @@ export default function FirstPaymentOption({
 
   return (
     <div
-      className={`mb-8 border-2 relative w-full max-w-md p-5 rounded-xl hover:bg-green-bg cursor-pointer ${
-        isQuantitySelected ? "bg-green-bg border-green" : "border-gray"
-      } transition-colors duration-150`}
+      className={clsx(
+        `mb-8 border-2 relative w-full max-w-md p-5 rounded-xl hover:bg-green-bg cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-1 focus:ring-green`,
+        {
+          "border-gray": true,
+          "bg-green-bg border-green": isQuantitySelected,
+        }
+      )}
       onClick={() => handleQuantityChange(totalValue, parcelQuantity)}
+      onKeyDown={() => handleQuantityChange(totalValue, parcelQuantity)}
+      tabIndex={parcelQuantity}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">
         Pix

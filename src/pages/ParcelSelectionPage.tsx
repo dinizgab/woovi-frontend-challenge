@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 import { parcelInformations } from "../utils/mocks/parcelValues";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ValueInfosContext } from "../providers/ValueInfosProvider";
 
 export default function ParcelSelectionPage() {
@@ -16,6 +16,7 @@ export default function ParcelSelectionPage() {
 
   const isQuantitySelected = (value: number): boolean =>
     selectedValue === value;
+    
   const handleQuantityChange = (
     totalValue: number,
     parcelQuantity: number,

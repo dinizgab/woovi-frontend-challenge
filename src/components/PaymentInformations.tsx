@@ -35,6 +35,7 @@ export default function PaymentInformations({
 
       {parcels.map((parcelValue, parcelNumber) => (
         <MensalPaymentInformation
+          key={parcelNumber}
           isPayed={isPayed}
           parcelValue={parcelValue}
           parcelNumber={parcelNumber}
