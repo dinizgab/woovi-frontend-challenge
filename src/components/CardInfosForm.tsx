@@ -20,7 +20,7 @@ export default function CardInfosForm() {
 
       <button
         type="submit"
-        className="p-2 bg-blue hover:bg-blue-hover rounded-xl w-full text-white transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue"
+        className="p-2 bg-blue hover:bg-blue-hover rounded-xl w-full text-white transition-colors duration-150 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-blue"
       >
         Pagar
       </button>

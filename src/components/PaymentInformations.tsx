@@ -9,11 +9,11 @@ import infosArrow from "../assets/infos-arrow.svg";
 import * as Accordion from "@radix-ui/react-accordion";
 
 interface PaymentInformationsProps {
-  isPayed: boolean;
+  howManyIsPayed: number;
 }
 
 export default function PaymentInformations({
-  isPayed,
+  howManyIsPayed,
 }: PaymentInformationsProps) {
   const { selectedValue, parcelQuantity } = useContext(ValueInfosContext);
   const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
@@ -36,7 +36,7 @@ export default function PaymentInformations({
       {parcels.map((parcelValue, parcelNumber) => (
         <MensalPaymentInformation
           key={parcelNumber}
-          isPayed={isPayed}
+          howManyIsPayed={howManyIsPayed}
           parcelValue={parcelValue}
           parcelNumber={parcelNumber}
         />
