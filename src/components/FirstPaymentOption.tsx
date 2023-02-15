@@ -16,6 +16,9 @@ export default function FirstPaymentOption({
   handleQuantityChange,
 }: FirstPaymentOptionProps) {
   const formatedTotalValue = moneyMask(totalValue);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") handleQuantityChange(totalValue, parcelQuantity);
+  };
 
   return (
     <div
@@ -27,7 +30,7 @@ export default function FirstPaymentOption({
         }
       )}
       onClick={() => handleQuantityChange(totalValue, parcelQuantity)}
-      onKeyDown={() => handleQuantityChange(totalValue, parcelQuantity)}
+      onKeyDown={(event) => handleKeyDown(event)}
       tabIndex={parcelQuantity}
     >
       <div className="bg-gray px-5 text-lg text-center font-extrabold rounded-full absolute -top-4 left-5">

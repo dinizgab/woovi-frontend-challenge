@@ -10,10 +10,7 @@ interface PaymentOptionProps {
   last: boolean;
   betterChoice: boolean;
   isQuantitySelected: boolean;
-  handleQuantityChange: (
-    totalValue: number,
-    parcelQuantity: number,
-  ) => void;
+  handleQuantityChange: (totalValue: number, parcelQuantity: number) => void;
 }
 
 export default function PaymentOption({
@@ -29,6 +26,11 @@ export default function PaymentOption({
   const formatedParceledValue = moneyMask(parceledValue);
   const formatedTotalValue = moneyMask(totalValue);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    console.log(event.key)
+    if (event.key === "Enter") handleQuantityChange(totalValue, parcelQuantity);
+  };
+
   return (
     <div
       className={clsx(
@@ -43,7 +45,7 @@ export default function PaymentOption({
         }
       )}
       onClick={() => handleQuantityChange(totalValue, parcelQuantity)}
-      onKeyDown={() => handleQuantityChange(totalValue, parcelQuantity)}
+      onKeyDown={(event) => handleKeyDown(event)}
       tabIndex={parcelQuantity}
     >
       {first && (
