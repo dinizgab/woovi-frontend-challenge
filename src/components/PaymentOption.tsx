@@ -27,7 +27,6 @@ export default function PaymentOption({
   const formatedTotalValue = moneyMask(totalValue);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log(event.key)
     if (event.key === "Enter") handleQuantityChange(totalValue, parcelQuantity);
   };
 

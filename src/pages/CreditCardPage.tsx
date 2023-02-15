@@ -7,8 +7,7 @@ import PaymentInformations from "../components/PaymentInformations";
 import { ValueInfosContext } from "../providers/ValueInfosProvider";
 
 export default function CreditCardPage() {
-  const { parcelQuantity, setParcelQuantity } = useContext(ValueInfosContext);
-  setParcelQuantity(5)
+  const { parcelQuantity } = useContext(ValueInfosContext);
 
   const headerTitle = `João, pague o restante em ${
     parcelQuantity - 1

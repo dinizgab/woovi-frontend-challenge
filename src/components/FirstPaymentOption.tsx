@@ -16,6 +16,7 @@ export default function FirstPaymentOption({
   handleQuantityChange,
 }: FirstPaymentOptionProps) {
   const formatedTotalValue = moneyMask(totalValue);
+  
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter") handleQuantityChange(totalValue, parcelQuantity);
   };
